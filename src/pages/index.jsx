@@ -44,57 +44,11 @@ const Demo = () => {
         }
     }, [account])
 
-    // const sendEth = async () => {
-    //     const PRIVATE_KEY = '8102957e1c2858fe3661ae1d0b1eaecc2b3f85885613eb99d6dd175998806afc';
-    //     const VINHOANG1 = "0xEb2F2cC5E639B084a02597de53921eaD0af0b927";
-
-    //     const nonce = await web3.eth.getTransactionCount(account, 'latest'); // nonce starts counting from 0
-
-    //     const transaction = {
-    //         to: VINHOANG1,
-    //         value: '1000000',
-    //         gas: 2000000,
-    //         gasPrice: gasPrice,
-    //         nonce: nonce,
-    //         chainId: chainId
-    //     }
-
-    //     const signedTx = await web3.eth.accounts.signTransaction(transaction, PRIVATE_KEY);
-
-    //     web3.eth.sendSignedTransaction(signedTx.rawTransaction, function (error, hash) {
-    //         if (!error) {
-    //             console.log("🎉 The hash of your transaction is: ", hash, "\n Check Alchemy's Mempool to view the status of your transaction!");
-    //         } else {
-    //             console.log("❗Something went wrong while submitting your transaction:", error)
-    //         }
-    //     });
-    // }
-
     const sendEth = async () => {
-        const nonce = await web3.eth.getTransactionCount(account, 'latest');
-
-        const transaction = {
-            gas: 2000000,
-            gasPrice: gasPrice,
-            nonce: nonce,
-            chainId: chainId
-        }
-
-        await sinhToken.methods.transfer("0x869700Fa534233B0552320ADfada33d878d48Bc1", "1000").send({ from: account }, function (err, res) {
-            if (err) {
-                console.log("Oi zoi oi,", err);
-                return
-            }
-
-            console.log("Hash of the transaction", res);
-        })
-    }
-
-    const estimateGas = async () => {
         const PRIVATE_KEY = '8102957e1c2858fe3661ae1d0b1eaecc2b3f85885613eb99d6dd175998806afc';
         const VINHOANG1 = "0xEb2F2cC5E639B084a02597de53921eaD0af0b927";
 
-        const nonce = await web3.eth.getTransactionCount(account, 'latest');
+        const nonce = await web3.eth.getTransactionCount(account, 'latest'); // nonce starts counting from 0
 
         const transaction = {
             to: VINHOANG1,
@@ -105,11 +59,57 @@ const Demo = () => {
             chainId: chainId
         }
 
-        web3.eth.estimateGas({
-            to: VINHOANG1,
-            data: transaction,
-        })
-            .then(console.log);
+        const signedTx = await web3.eth.accounts.signTransaction(transaction, PRIVATE_KEY);
+
+        web3.eth.sendSignedTransaction(signedTx.rawTransaction, function (error, hash) {
+            if (!error) {
+                console.log("🎉 The hash of your transaction is: ", hash, "\n Check Alchemy's Mempool to view the status of your transaction!");
+            } else {
+                console.log("❗Something went wrong while submitting your transaction:", error)
+            }
+        });
+    }
+
+    // const sendEth = async () => {
+    //     const nonce = await web3.eth.getTransactionCount(account, 'latest');
+
+    //     const transaction = {
+    //         gas: 2000000,
+    //         gasPrice: gasPrice,
+    //         nonce: nonce,
+    //         chainId: chainId
+    //     }
+
+    //     await sinhToken.methods.transfer("0x869700Fa534233B0552320ADfada33d878d48Bc1", "1000").send({ from: account }, function (err, res) {
+    //         if (err) {
+    //             console.log("Oi zoi oi,", err);
+    //             return
+    //         }
+
+    //         console.log("Hash of the transaction", res);
+    //     })
+    // }
+
+    const estimateGas = async () => {
+        // const PRIVATE_KEY = '8102957e1c2858fe3661ae1d0b1eaecc2b3f85885613eb99d6dd175998806afc';
+        // const VINHOANG1 = "0xEb2F2cC5E639B084a02597de53921eaD0af0b927";
+
+        // const nonce = await web3.eth.getTransactionCount(account, 'latest');
+
+        // const transaction = {
+        //     to: VINHOANG1,
+        //     value: '1000000',
+        //     gas: 2000000,
+        //     gasPrice: gasPrice,
+        //     nonce: nonce,
+        //     chainId: chainId
+        // }
+
+        // web3.eth.estimateGas({
+        //     to: VINHOANG1,
+        //     data: transaction,
+        // })
+        //     .then(console.log);
     }
 
 
