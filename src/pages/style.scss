@@ -1,0 +1,128 @@
+.page{
+    display: flex;
+    width: 100%;
+
+    flex-direction: column;
+
+    & .header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 20px 15px;
+
+        &-logo{
+            width: 100px;
+            height: auto;
+        }
+
+        & .btn-sign{
+            font-size: 24px;
+            padding: 10px 25px;
+
+            border-radius: 10px;
+        }
+    }
+
+    & .address {
+        display: flex;
+        padding: 10px;
+        justify-content: center;
+
+        font-size: 30px;
+
+        padding: 20px 15px;
+        border-bottom: 1px solid rgb(206, 206, 206);
+    }
+
+    &-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        padding: 20px 15px;
+
+        &--img {
+            width: 40px;
+            height: 40px;
+
+            margin-bottom: 30px;
+        }
+
+        & h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        &--btn {
+            display: flex;
+            justify-content: center;
+
+            width: 100%;
+
+            & button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                padding: 10px 25px;
+
+                margin: 0 10px;
+            }
+        }
+    }
+
+    &-bottom {
+        display: flex;
+        width: 100%;
+
+        flex-direction: column;
+
+        & .table-item {
+            display: flex;
+            width: 100%;
+
+            margin-bottom: 20px;
+
+            & h1 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 50%;
+
+                cursor: pointer;
+            }
+        }
+
+        & .table-container {
+            display: flex;
+            width: 100%;
+
+            & .table {
+                display: none;
+                height: 70px;
+                width: 100%;
+
+                padding: 20px 25px;
+
+                align-items: center;
+
+                &-img {
+                    width: 30px;
+                    height: 30px;
+                }
+
+                & span {
+                    font-size: 24px;
+
+                    margin-left: 10px;
+                }
+            }
+
+            & .active {
+                display: flex;
+                width: 100%;
+            }
+        }
+    }
+}
